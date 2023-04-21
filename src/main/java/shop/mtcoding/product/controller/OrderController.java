@@ -8,7 +8,7 @@ public class OrderController {
 
     @GetMapping("/order")
     public String orderListForm() {
-        return "order/orderList";
+        return "order/orderListForm";
     }
 
 }

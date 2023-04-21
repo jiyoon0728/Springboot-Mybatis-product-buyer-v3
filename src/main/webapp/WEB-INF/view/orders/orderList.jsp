@@ -13,7 +13,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="orderlist" items="${ordersproduct}">
+			<c:forEach var="orderlist" items="${orderslist}">
 				<tr>
 					<td>${orderlist.ordersName}</td>
 					<td>${orderlist.ordersPrice}</td>
