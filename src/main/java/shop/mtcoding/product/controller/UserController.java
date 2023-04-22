@@ -2,6 +2,7 @@ package shop.mtcoding.product.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import shop.mtcoding.product.dto.ResponseDto;
+import shop.mtcoding.product.dto.user.RequestDto;
 import shop.mtcoding.product.dto.user.RequestDto.JoinReqDto;
 import shop.mtcoding.product.dto.user.RequestDto.LoginReqDto;
 import shop.mtcoding.product.handler.ex.CustomApiException;
@@ -62,29 +64,9 @@ public class UserController {
     }
 
     @PostMapping("/join")
-    public @ResponseBody ResponseDto<?> join(@RequestBody JoinReqDto joinReqDto) {
-        if (joinReqDto.getUsername() == null || joinReqDto.getUsername().isEmpty()) {
-            throw new CustomApiException("username을 작성해주세요");
-            // return new ResponseDto<>(-1, "username이 입력되지 않았습니다.", null);
-        }
-        if (joinReqDto.getPassword() == null || joinReqDto.getPassword().isEmpty()) {
-            throw new CustomApiException("password를 작성해주세요");
-            // return new ResponseDto<>(-1, "password가 입력되지 않았습니다.", null);
-        }
-        if (joinReqDto.getEmail() == null || joinReqDto.getEmail().isEmpty()) {
-            throw new CustomApiException("email을 작성해주세요");
-            // return new ResponseDto<>(-1, "email이 입력되지 않았습니다.", null);
-        }
-        if (joinReqDto.getUsername().isBlank()) {
-            return new ResponseDto<>(-1, "회원가입 실패", null);
-        }
-        if (joinReqDto.getEmail().isBlank()) {
-            return new ResponseDto<>(-1, "회원가입 실패", null);
-        }
-        if (joinReqDto.getPassword().isBlank()) {
-            return new ResponseDto<>(-1, "회원가입 실패", null);
-        }
+    public String join(JoinReqDto joinReqDto) {
         userRepository.insert(joinReqDto);
-        return new ResponseDto<>(1, "회원가입 성공", null);
+
+        return "redirect:/";
     }
 }
