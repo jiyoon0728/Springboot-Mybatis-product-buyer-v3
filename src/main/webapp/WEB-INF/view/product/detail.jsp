@@ -20,9 +20,9 @@
 		</tbody>
 	</table>
 	<div class="d-flex">
-		<a href="/product/${product.id}/updateForm" class="btn btn-warning">상품수정</a>
+		<%-- <a href="/product/${product.id}/updateForm" class="btn btn-warning">상품수정</a>
 		<form action="/product/${product.id}/delete" method="post">
-			<button id="btnDelete" type="submit"  class="btn btn-danger">상품삭제</button>
+			<button id="btnDelete" type="submit"  class="btn btn-danger">상품삭제</button> --%>
 		</form>
 	</div>
 </div>

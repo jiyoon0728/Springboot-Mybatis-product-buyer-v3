@@ -15,10 +15,10 @@
 		<tbody>
 			<c:forEach var="orderlist" items="${orderslist}">
 				<tr>
-					<td>${orderlist.ordersName}</td>
-					<td>${orderlist.ordersPrice}</td>
-					<td>${orderlist.ordersQty}</td>
-				</tr>
+                        <td>${orderslist.ordersName}</a></td>
+                        <td>${orderslist.ordersPrice}원</td>
+                        <td>${orderslist.ordersQty}개</td>
+                    </tr>
 			</c:forEach>
 		</tbody>
 	</table>

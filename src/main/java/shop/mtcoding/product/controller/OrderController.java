@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class OrderController {
 
-    @GetMapping("/order")
+    @GetMapping("/ordersList")
     public String orderListForm() {
-        return "order/orderListForm";
+        return "orders/ordersList";
     }
 
 }
