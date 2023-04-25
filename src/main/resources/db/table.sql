@@ -11,7 +11,6 @@ create table user_tb(
     username varchar(100) not null unique,
     password varchar not null,
     email varchar(100) not null,
-    role VARCHAR(20) default 'user' NOT null,
     created_at timestamp
 );
 

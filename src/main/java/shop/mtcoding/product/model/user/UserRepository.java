@@ -3,21 +3,22 @@ package shop.mtcoding.product.model.user;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import shop.mtcoding.product.dto.user.RequestDto.JoinReqDto;
 import shop.mtcoding.product.dto.user.RequestDto.LoginReqDto;
 
 @Mapper
 public interface UserRepository {
-    public void insert(JoinReqDto joinReqDto);
+    public User login(LoginReqDto loginReqDto); 
 
-    public User findById(Integer usersId);
+    public List<User> findAll(); 
 
-    public List<User> findAll();
+    public User findById(int id);
 
-    public void update(User user);
+    public int insert(JoinReqDto joinReqDto);
 
-    public void delete(Integer usersId);
+    public int delete(@Param("id") int id);
 
-    public User login(LoginReqDto loginReqDto);
+    public int update(@Param("username") String username, @Param("password") String password, @Param("email") String email);
 }

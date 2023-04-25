@@ -2,7 +2,7 @@ package shop.mtcoding.product.controller;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.connector.Request;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,8 +28,8 @@ public class UserController {
     @Autowired
     HttpSession session;
 
-    // 메인페이지가 로그인 페이지
-    @GetMapping({ "/", "/loginForm" })
+   
+    @GetMapping("/loginForm")
     public String loginForm() {
         return "user/loginForm";
     }
@@ -65,8 +65,18 @@ public class UserController {
 
     @PostMapping("/join")
     public String join(JoinReqDto joinReqDto) {
-        userRepository.insert(joinReqDto);
+        if (joinReqDto.getUsername() == null || joinReqDto.getUsername().isEmpty()) {
+            throw new CustomException("username을 작성해주세요");
+        }
+        if (joinReqDto.getPassword() == null || joinReqDto.getPassword().isEmpty()) {
+            throw new CustomException("password를 작성해주세요");
+        }
 
-        return "redirect:/";
+        if (joinReqDto.getEmail() == null || joinReqDto.getEmail().isEmpty()) {
+            throw new CustomException("email을 작성해주세요");
+        }
+        userRepository.insert(joinReqDto);
+            return "redirect:/loginForm";
+
     }
 }

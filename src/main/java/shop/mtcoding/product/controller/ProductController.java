@@ -36,7 +36,7 @@ public class ProductController {
         return "product/detail";
     }
 
-    @GetMapping("/product" )
+    @GetMapping({"/", "/product" })
     public String list(Model model) {
         List<Product> productList = productRepository.findAll();
         model.addAttribute("productList", productList);

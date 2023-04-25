@@ -2,7 +2,7 @@ package shop.mtcoding.product.dto.user;
 
 import lombok.Getter;
 import lombok.Setter;
-import shop.mtcoding.product.model.user.User;
+
 
 public class RequestDto {
     @Setter
